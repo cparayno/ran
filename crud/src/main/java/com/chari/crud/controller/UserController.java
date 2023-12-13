@@ -44,13 +44,13 @@ public class UserController {
     public String updateUser(@PathVariable("id") String id, User userModel) {
         user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user id:" +id));
-        userRepository.
+        userRepository.save(userModel);
+        return "User updated successfully";
     }
 
     @GetMapping("/allUsers")
     public List<User> allUsers() {
         return userRepository.findAll();
     }
-
 
 }
